@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porcentaje</title>
+    <link rel="stylesheet" href="../styl.css">
+</head>
+<body>
+
+    <h1>Porcentaje de Hombres y Mujeres en el Grupo</h1>
+    <label for="numeroHombres">Número de hombres:</label>
+    <input type="number" id="numeroHombres" min="0">
+    <br>
+    <label for="numeroMujeres">Número de mujeres:</label>
+    <input type="number" id="numeroMujeres" min="0">
+    <br>
+    <button onclick="calcularPorcentajes()">Calcular Porcentajes</button>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularPorcentajes() {
+            // Obtener el número de hombres y mujeres del input
+            let numeroHombres = document.getElementById("numeroHombres").value;
+            let numeroMujeres = document.getElementById("numeroMujeres").value;
+
+            // Convertir a números enteros
+            numeroHombres = parseInt(numeroHombres);
+            numeroMujeres = parseInt(numeroMujeres);
+
+            // Calcular el total de estudiantes
+            let totalEstudiantes = numeroHombres + numeroMujeres;
+
+            if (totalEstudiantes > 0) {
+                // Calcular los porcentajes
+                let porcentajeHombres = (numeroHombres / totalEstudiantes) * 100;
+                let porcentajeMujeres = (numeroMujeres / totalEstudiantes) * 100;
+
+                // Mostrar los resultados
+                document.getElementById("resultado").innerText = 
+                    "Porcentaje de hombres: " + porcentajeHombres.toFixed(2) + "%\n" +
+                    "Porcentaje de mujeres: " + porcentajeMujeres.toFixed(2) + "%";
+            } else {
+                document.getElementById("resultado").innerText = "Debe ingresar un número válido de hombres y mujeres.";
+            }
+        }
+    </script> 
+      <footer>
+        <a href="../index.html">Regresar al menu principal</a>
+    </footer>
+</body>
+</html>

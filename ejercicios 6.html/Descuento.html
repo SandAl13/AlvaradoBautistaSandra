@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descuento</title>
+    <style>
+        body {
+            background-color: #b1f1b6; 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de descuento</h1>
+    <label for="totalCompra">Total de la Compra:</label>
+    <input type="number" id="totalCompra" min="0" step="0.01">
+    <br>
+    <button onclick="calcularDescuento()">Calcular Total</button>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularDescuento() {
+            // Obtener el total de la compra del input
+            let totalCompra = parseFloat(document.getElementById("totalCompra").value);
+
+            // Verificar que el total de la compra sea válido
+            if (isNaN(totalCompra) || totalCompra < 0) {
+                document.getElementById("resultado").innerText = "Por favor, ingrese un total de compra válido.";
+                return;
+            }
+
+            // Calcular el descuento
+            let descuento = totalCompra * 0.15;
+
+            // Calcular el total a pagar después del descuento
+            let totalConDescuento = totalCompra - descuento;
+
+            // Mostrar el total a pagar
+            document.getElementById("resultado").innerText = 
+                "Total de la Compra: $" + totalCompra.toFixed(2) + "\n" +
+                "Descuento: $" + descuento.toFixed(2) + "\n" +
+                "Total a Pagar: $" + totalConDescuento.toFixed(2);
+        }
+    </script>
+      <footer>
+        <a href="../index.html">Regresar al menu principal</a>
+    </footer>
+</body>
+</html>

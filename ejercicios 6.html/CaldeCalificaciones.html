@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Calificación</title>
+    <style>
+        body {
+            background-color: #a8d3f9;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #055608;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Calificación en Algoritmos</h1>
+    <label for="calif1">Calificación del primer parcial:</label>
+    <input type="number" id="calif1" min="0" max="100">
+    <br>
+    <label for="calif2">Calificación del segundo parcial:</label>
+    <input type="number" id="calif2" min="0" max="100">
+    <br>
+    <label for="calif3">Calificación del tercer parcial:</label>
+    <input type="number" id="calif3" min="0" max="100">
+    <br>
+    <label for="examenFinal">Examen Final:</label>
+    <input type="number" id="examenFinal" min="0" max="100">
+    <br>
+    <label for="trabajoFinal">Trabajo Final:</label>
+    <input type="number" id="trabajoFinal" min="0" max="100">
+    <br>
+    <button onclick="calcularCalificacion()">Calcular Calificación</button>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularCalificacion() {
+            // Obtener las calificaciones del input
+            let calif1 = parseFloat(document.getElementById("calif1").value);
+            let calif2 = parseFloat(document.getElementById("calif2").value);
+            let calif3 = parseFloat(document.getElementById("calif3").value);
+            let examenFinal = parseFloat(document.getElementById("examenFinal").value);
+            let trabajoFinal = parseFloat(document.getElementById("trabajoFinal").value);
+
+            // Verificar que todas las calificaciones sean válidas
+            if (isNaN(calif1) || isNaN(calif2) || isNaN(calif3) || isNaN(examenFinal) || isNaN(trabajoFinal)) {
+                document.getElementById("resultado").innerText = "Por favor, ingrese todas las calificaciones.";
+                return;
+            }
+
+            // Calcular el promedio de las tres calificaciones finales
+            let promedioFinales = (calif1 + calif2 + calif3) / 3;
+
+            // Calcular la calificación total
+            let calificacionTotal = (promedioFinales * 0.55) + (examenFinal * 0.30) + (trabajoFinal * 0.15);
+
+            // Mostrar la calificación total
+            document.getElementById("resultado").innerText = "Su calificación total en Algoritmos es: " + calificacionTotal.toFixed(2);
+        }
+    </script>
+    <footer>
+        <a href="../index.html">Regresar al menu principal</a>
+    </footer>
+</body>
+</html>

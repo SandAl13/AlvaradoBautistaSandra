@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular la edad de una persona </title>
+    <style>
+        body {
+            background-color: #a8d3f9;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #055608;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Esto es una calculadora de edad</h1>
+    <label for="fechaNacimiento">Ingrese su fecha de nacimiento:</label>
+<input type="date" id="fechaNacimiento">
+<button onclick="calcularEdad()">Calcular Edad</button>
+<p id="resultado"></p>
+<script>
+    function calcularEdad() {
+        // Obtener la fecha de nacimiento del input
+        let fechaNacimiento = document.getElementById("fechaNacimiento").value;
+        
+        // Convertir la fecha de nacimiento a un objeto Date
+        let fechaNacimientoDate = new Date(fechaNacimiento);
+        
+        // Obtener la fecha actual
+        let fechaActual = new Date();
+        
+        // Calcular la edad
+        let edad = fechaActual.getFullYear() - fechaNacimientoDate.getFullYear();
+        
+        // Ajustar si la persona no ha cumplido años en el año actual
+        let mesActual = fechaActual.getMonth();
+        let diaActual = fechaActual.getDate();
+        let mesNacimiento = fechaNacimientoDate.getMonth();
+        let diaNacimiento = fechaNacimientoDate.getDate();
+
+        if (mesActual < mesNacimiento || (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
+            edad--;
+        }
+
+        // Mostrar la edad calculada
+        document.getElementById("resultado").innerText = "Su edad es: " + edad + " años.";
+    }
+</script>
+<footer>
+    <a href="../index.html">Regresar al menu principal</a>
+</footer>
+
+</body>
+</html>
