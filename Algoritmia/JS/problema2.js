@@ -34,21 +34,21 @@
 }
 
 function problema1() {
-    var frase = document.getElementById('p1-input').value; // Obtiene la frase del input
-    var palabras = frase.split(' '); // Divide la frase en palabras
-    var palabrasInvertidas = palabras.reverse(); // Invierte el orden de las palabras
-    var fraseInvertida = palabrasInvertidas.join(' '); // Une las palabras invertidas en una nueva frase
+    var frase = document.getElementById('p1-input').value;
+    var palabras = frase.split(' ');
+    var palabrasInvertidas = palabras.reverse();
+    var fraseInvertida = palabrasInvertidas.join(' ');
     document.getElementById('p1-output').textContent = 'Palabras invertidas: ' + fraseInvertida;
 }
 
 function problema3() {
-    var input = document.getElementById('p3-input').value; // Obtiene el valor del input
-    var palabras = input.split(','); // Divide las palabras por coma
+    var input = document.getElementById('p3-input').value;
+    var palabras = input.split(',');
     var maxUnicos = 0;
     var palabraConMasUnicos = '';
 
     palabras.forEach(function(palabra) {
-        var caracteresUnicos = new Set(palabra); // Utiliza un Set para obtener caracteres únicos
+        var caracteresUnicos = new Set(palabra);
         if (caracteresUnicos.size > maxUnicos) {
             maxUnicos = caracteresUnicos.size;
             palabraConMasUnicos = palabra;
